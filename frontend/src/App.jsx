@@ -1,10 +1,11 @@
 
 import './App.css'
+import HeroSection from './components/HeroSection'
 
 function App() {
   return (
     <>
-      <h1>Let the Bus Start</h1>
+      <HeroSection />
     </>
   )
 }
