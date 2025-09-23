@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Parent container */
+.booking-container {
+  width: 80%;
+  margin: 20px auto; /* centers horizontally */
+  display: flex;
+  justify-content: center;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 22px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.search-box input,
+.search-box button {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 22px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-box button {
+  flex: 0 0 auto; /* button stays compact */
+  background: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s;
+}
+
+.search-box button:hover {
+  background: #45a049;
+}

@@ -1,10 +1,11 @@
 
 import './App.css'
+import Booking from './components/Booking'
 
 function App() {
   return (
     <>
-      <h1>Let the Bus Start</h1>
+      <Booking />
     </>
   )
 }
