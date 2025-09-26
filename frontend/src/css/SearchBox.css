@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #000; /* optional: black background for the app */
+  background-color: #000; /* black background */
   color: #fff;
 }
 
@@ -13,43 +13,32 @@ body {
   width: 90%;
   max-width: 1000px;
   position: absolute;       
-  top: 100%; 
+  top: 0; 
+  transform: translateY(-50%); /* half-overlap */
   display: flex;
   justify-content: center;
   font-family: 'Poppins', sans-serif;
   z-index: 10;
 
-  /* Glass effect */
   background: rgba(255, 255, 255, 0.2); /* semi-transparent */
   border-radius: 25px;
-  backdrop-filter: blur(10px); /* blur background */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle outline */
-  padding: 10px;
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 15px 25px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
-
-/* Search Box */
-/* ... keep the rest unchanged ... */
 
 /* Search Box */
 .search-box {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
-  padding: 15px 20px;
-  border-radius: 20px;
-  
-  align-items: stretch; /* all items same height */
+  align-items: stretch;
   box-sizing: border-box;
-
-  /* Removed inner background for full transparency */
   background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
 }
-
 
 /* Input Groups */
 .input-group {
@@ -61,7 +50,7 @@ body {
 
 .input-group label {
   font-size: 13px;
-  color: #fff; /* white text on glass */
+  color: #fff; /* labels visible on glass */
   margin-bottom: 4px;
 }
 
@@ -75,12 +64,12 @@ body {
   outline: none;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.1);
-  color: #1b1b1b;
+  color: #000;
   font-weight: 600;
 }
 
 .search-box input::placeholder {
-  color: #1b1b1b;
+  color: #000;
   font-weight: 600;
 }
 
@@ -93,7 +82,7 @@ body {
 .search-box button {
   margin-top: 25px;
   height: 45px;
-  flex: 0 0 150px; /* fixed width */
+  flex: 1 1 150px; /* same width as inputs */
   border: none;
   border-radius: 22px;
   background: #4CAF50;

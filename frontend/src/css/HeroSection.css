@@ -2,6 +2,7 @@
 .heroContainer {
   width: 90%;
   margin: 100px auto;
+  margin-bottom: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,20 +56,14 @@
 .searchWrapper {
   position: absolute;
   top: 0;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   width: 90%;
   display: flex;
   justify-content: center;
   z-index: 10;
 
   /* Glass effect */
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 15px 25px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
 }
 
 /* Search box inputs */
@@ -99,11 +94,12 @@
 /* Travel rows below hero container */
 .travelRows {
   width: 100%;
-  margin: 80px auto 0;
+  margin: 20px auto 0;
   display: flex;
   flex-direction: column;
   gap: 15px;
   overflow: hidden;
+  margin-bottom: 100px;
 }
 
 .travelRow {
