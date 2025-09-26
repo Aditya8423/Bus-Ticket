@@ -1,0 +1,8 @@
+/* index.css or App.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* black background */
+  color: #fff;            /* optional: make text white for contrast */
+  font-family: 'Poppins', sans-serif; /* keep your font */
+}

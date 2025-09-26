@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000; /* optional: black background for the app */
+  color: #fff;
+}
+
+/* Glass-effect booking container */
+.booking-container {
+  width: 90%;
+  max-width: 1000px;
+  position: absolute;       
+  top: 100%; 
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  z-index: 10;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.2); /* semi-transparent */
+  border-radius: 25px;
+  backdrop-filter: blur(10px); /* blur background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle outline */
+  padding: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* Search Box */
+/* ... keep the rest unchanged ... */
+
+/* Search Box */
+.search-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 20px;
+  
+  align-items: stretch; /* all items same height */
+  box-sizing: border-box;
+
+  /* Removed inner background for full transparency */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+
+/* Input Groups */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 200px;
+  min-width: 150px;
+}
+
+.input-group label {
+  font-size: 13px;
+  color: #fff; /* white text on glass */
+  margin-bottom: 4px;
+}
+
+/* Inputs */
+.search-box input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 22px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  color: #1b1b1b;
+  font-weight: 600;
+}
+
+.search-box input::placeholder {
+  color: #1b1b1b;
+  font-weight: 600;
+}
+
+.search-box input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+/* Button */
+.search-box button {
+  margin-top: 25px;
+  height: 45px;
+  flex: 0 0 150px; /* fixed width */
+  border: none;
+  border-radius: 22px;
+  background: #4CAF50;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.search-box button:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .search-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-group, .search-box button {
+    width: 100%;
+    height: auto;
+  }
+}
