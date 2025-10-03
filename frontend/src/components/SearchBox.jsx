@@ -1,7 +1,14 @@
 import React from "react";
 import "../css/SearchBox.css";
+import { useNavigate } from "react-router-dom";
 
 function SearchBox() {
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate("/bus-list"); // redirects to BusList.jsx
+  };
+
   return (
     <div className="booking-container">
       <div className="search-box">
@@ -20,7 +27,7 @@ function SearchBox() {
           <input id="date" type="date" />
         </div>
 
-        <button>Search</button>
+        <button onClick={handleSearch}>Search</button>
       </div>
     </div>
   );

@@ -1,0 +1,93 @@
+/* Page wrapper to center content */
+.booking-summary-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Outer container for both boxes */
+.summary-container {
+  max-width: 900px;       
+  width: 100%;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 22px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;  /* Title + content stacked */
+  gap: 20px;
+}
+
+/* Flex container for boxes */
+.summary-boxes {
+  display: flex;
+  flex-direction: row;    /* side by side */
+  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Individual box */
+.summary-box {
+  flex: 1;                /* equal width */
+  height: 250px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  min-width: 300px;       /* prevent collapsing */
+}
+
+/* Box title */
+.summary-box h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Box content */
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+/* Pay / Back button */
+.back-btn {
+  padding: 12px 25px;
+  width: auto;
+  display: block;
+  margin: 20px auto 0;
+  border: none;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 60, 0, 0.55),
+    rgba(0, 100, 0, 0.75)
+  );
+  color: #e0ffe0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08),
+              0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.back-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 100, 0, 0.75),
+    rgba(0, 150, 0, 0.85)
+  );
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15),
+              0 6px 25px rgba(0, 0, 0, 0.7);
+}

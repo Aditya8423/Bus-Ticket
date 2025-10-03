@@ -1,0 +1,64 @@
+.bus-list-page {
+  padding: 20px 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.searchbox {
+    display: flex;             /* make it flex */
+  flex-direction: column;    /* stack children vertically */
+  align-items: center;       /* center horizontally */
+}
+
+.bus-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bus-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.bus-info h3 {
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.bus-info p {
+  margin: 4px 0;
+  color: #ddd;
+}
+
+.bus-action {
+  text-align: right;
+}
+
+.bus-action h2 {
+  margin: 0 0 10px;
+  color: #4CAF50;
+}
+
+.bus-action button {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  border: none;
+  border-radius: 22px;
+  padding: 20px 36px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bus-action button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}

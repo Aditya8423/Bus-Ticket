@@ -1,0 +1,116 @@
+.vendor-dashboard-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.dashboard-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.dashboard-tabs button {
+    list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 10px 25px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.18); /* brighten on hover */
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.25), 
+    inset 0 1px 2px rgba(255, 255, 255, 0.3); /* subtle highlight inside */
+}
+
+.dashboard-tabs button.active,
+.dashboard-tabs button:hover {
+  background: rgba(0, 128, 0, 0.6);
+  color: #fff;
+}
+
+.dashboard-section {
+  width: 100%;
+  max-width: 450px;
+}
+
+.dashboard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dashboard-form input,
+.dashboard-form select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 22px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-weight: 600;
+}
+
+.dashboard-form input:focus {
+    border-color: #007bff; 
+}
+
+.dashboard-form button {
+  margin-top: 30px;
+  padding: 12px 15px;
+  width: 100%;    
+  flex: none;
+  border: none;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 60, 0, 0.55),
+    rgba(0, 100, 0, 0.75)
+  );
+  color: #e0ffe0; /* softer green-white text */
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08),
+              0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.dashboard-form button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 100, 0, 0.75),
+    rgba(0, 150, 0, 0.85)
+  );
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15),
+              0 6px 25px rgba(0, 0, 0, 0.7);
+}
+
+.list {
+  margin-top: 15px;
+  list-style: none;
+  padding-left: 10px;
+}
+
+.list li {
+  padding: 5px 0;
+}

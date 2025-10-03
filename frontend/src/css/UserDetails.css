@@ -1,0 +1,93 @@
+/* Make whole page flex center */
+.user-details-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* Glassmorphism card */
+.user-details-container {
+  width: 90%;
+  max-width: 450px;
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 22px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.user-details-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details-form label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.user-details-form input,
+.user-details-form select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 22px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-weight: 600;
+}
+
+.user-details-form select option {
+  color: #000; /* black text for options */
+}
+
+.user-details-form input:focus,
+.user-details-form select:focus {
+  border-color: #007bff;    /* same focus effect as search */
+}
+
+.book-btn {
+  margin-top: 30px;
+  padding: 12px 15px;
+  width: 100%;       /* fixed width */     /* fixed height */
+  flex: none;
+  border: none;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 60, 0, 0.55),
+    rgba(0, 100, 0, 0.75)
+  );
+  color: #e0ffe0; /* softer green-white text */
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08),
+              0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.book-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 100, 0, 0.75),
+    rgba(0, 150, 0, 0.85)
+  );
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15),
+              0 6px 25px rgba(0, 0, 0, 0.7);
+}

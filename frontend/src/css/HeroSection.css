@@ -53,7 +53,7 @@
 }
 
 /* Glassy Search Box overlapping hero container */
-.searchWrapper {
+/* .searchWrapper {
   position: absolute;
   top: 0;
   transform: translateY(-40%);
@@ -62,8 +62,19 @@
   justify-content: center;
   z-index: 10;
 
-  /* Glass effect */
+  /* Glass effect 
   
+} */
+
+.searchWrapper {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+
+  transform: translateY(-40%); /* half-overlap effect */
 }
 
 /* Search box inputs */
