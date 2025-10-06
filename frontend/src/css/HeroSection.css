@@ -92,16 +92,6 @@
   transition: all 0.3s ease;
 }
 
-.searchWrapper input::placeholder {
-  color: #1b1b1b;
-  font-weight: 600;
-}
-
-.searchWrapper input:focus {
-  border-color: #007bff;
-  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.2);
-}
-
 /* Travel rows below hero container */
 .travelRows {
   width: 100%;

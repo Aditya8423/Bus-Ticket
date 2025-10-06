@@ -14,7 +14,7 @@
 }
 
 .dashboard-tabs button {
-    list-style: none;
+  list-style: none;
   display: flex;
   gap: 20px;
   margin: 0;
@@ -65,7 +65,8 @@
 }
 
 .dashboard-form input:focus {
-    border-color: #007bff; 
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
 }
 
 .dashboard-form button {

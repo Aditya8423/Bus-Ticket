@@ -52,7 +52,8 @@
 
 .user-details-form input:focus,
 .user-details-form select:focus {
-  border-color: #007bff;    /* same focus effect as search */
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
 }
 
 .book-btn {

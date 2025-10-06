@@ -1,60 +1,67 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios"; // ✅ use axios instance
 import "../css/VendorLogin.css";
 
 const VendorLogin = () => {
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
 
-  // Login states
+  // States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  // Signup states
   const [vendorName, setVendorName] = useState("");
   const [phone, setPhone] = useState("");
-  const [showSuccessScreen, setShowSuccessScreen] = useState(false); // full screen success
-
-  // Hardcoded vendor for demo
-  const validVendor = {
-    email: "vendor@example.com",
-    password: "vendor123",
-  };
+  const [error, setError] = useState("");
+  const [showSuccessScreen, setShowSuccessScreen] = useState(false);
 
   // Handle login
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    try {
+      const response = await api.post("/vendors/login", { email, password });
 
-    if (email === validVendor.email && password === validVendor.password) {
-      localStorage.setItem("vendorLoggedIn", "true");
-      navigate("/vendor-dashboard");
-    } else {
-      setError("Invalid email or password");
+      if (response.data.success) {
+        localStorage.setItem("vendorLoggedIn", "true");
+        navigate("/vendor-dashboard");
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Server error. Please try again.");
     }
   };
 
   // Handle signup
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    try {
+      const response = await api.post("/vendors/signup", {
+        vendorName,
+        phone,
+        email,
+        password,
+      });
 
-    const newVendor = { vendorName, phone, email, password };
-    localStorage.setItem("registeredVendor", JSON.stringify(newVendor));
+      if (response.status === 201) {
+        setShowSuccessScreen(true);
 
-    // Show full-screen success
-    setShowSuccessScreen(true);
+        // Reset form
+        setVendorName("");
+        setPhone("");
+        setEmail("");
+        setPassword("");
 
-    // Reset form
-    setVendorName("");
-    setPhone("");
-    setEmail("");
-    setPassword("");
-
-    // After 2 seconds → switch back to login
-    setTimeout(() => {
-      setShowSuccessScreen(false);
-      setIsSignup(false);
-    }, 2000);
+        setTimeout(() => {
+          setShowSuccessScreen(false);
+          setIsSignup(false);
+        }, 2000);
+      }
+    } catch (err) {
+      console.error("Signup error:", err);
+      setError("Failed to register vendor. Please try again.");
+    }
   };
 
   if (showSuccessScreen) {
@@ -149,6 +156,8 @@ const VendorLogin = () => {
                 placeholder="Enter your password"
               />
             </div>
+
+            {error && <p className="error">{error}</p>}
 
             <button type="submit" className="login-btn">Register</button>
             <p className="toggle-text">

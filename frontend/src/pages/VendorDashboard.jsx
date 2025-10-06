@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../css/VendorDashboard.css";
 
 const VendorDashboard = () => {
@@ -26,47 +27,98 @@ const VendorDashboard = () => {
   const [drivers, setDrivers] = useState([]);
   const [routes, setRoutes] = useState([]);
 
+  // ✅ Fetch initial data
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const [busRes, driverRes, routeRes] = await Promise.all([
+        axios.get("http://localhost:8080/api/buses"),
+        axios.get("http://localhost:8080/api/drivers"),
+        axios.get("http://localhost:8080/api/routes"),
+      ]);
+      setBuses(busRes.data);
+      setDrivers(driverRes.data);
+      setRoutes(routeRes.data);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+  };
+
   // Handlers
-  const handleAddBus = (e) => {
+  const handleAddBus = async (e) => {
     e.preventDefault();
-    setBuses([...buses, { busNumber, totalSeats }]);
-    setBusNumber("");
-    setTotalSeats("");
+    try {
+      const response = await axios.post("http://localhost:8080/api/buses", {
+        busNumber,
+        totalSeats,
+      });
+      setBuses([...buses, response.data]);
+      setBusNumber("");
+      setTotalSeats("");
+    } catch (err) {
+      console.error("Error adding bus:", err);
+    }
   };
 
-  const handleAddDriver = (e) => {
+  const handleAddDriver = async (e) => {
     e.preventDefault();
-    setDrivers([...drivers, { driverName, driverPhone }]);
-    setDriverName("");
-    setDriverPhone("");
+    try {
+      const response = await axios.post("http://localhost:8080/api/drivers", {
+        driverName,
+        driverPhone,
+      });
+      setDrivers([...drivers, response.data]);
+      setDriverName("");
+      setDriverPhone("");
+    } catch (err) {
+      console.error("Error adding driver:", err);
+    }
   };
 
-  const handleAddRoute = (e) => {
+  const handleAddRoute = async (e) => {
     e.preventDefault();
-    setRoutes([...routes, { source, destination, distance }]);
-    setSource("");
-    setDestination("");
-    setDistance("");
+    try {
+      const response = await axios.post("http://localhost:8080/api/routes", {
+        source,
+        destination,
+        distance,
+      });
+      setRoutes([...routes, response.data]);
+      setSource("");
+      setDestination("");
+      setDistance("");
+    } catch (err) {
+      console.error("Error adding route:", err);
+    }
   };
 
-  const handleAddSchedule = (e) => {
+  const handleAddSchedule = async (e) => {
     e.preventDefault();
-    const schedule = {
-      bus: selectedBus,
-      driver: selectedDriver,
-      route: selectedRoute,
-      arrival,
-      departure,
-      price,
-    };
-    console.log("Schedule Added:", schedule);
-    setSelectedBus("");
-    setSelectedDriver("");
-    setSelectedRoute("");
-    setArrival("");
-    setDeparture("");
-    setPrice("");
-    alert("Schedule Added! (check console)");
+    try {
+      const response = await axios.post("http://localhost:8080/api/schedules", {
+        busId: selectedBus,
+        driverId: selectedDriver,
+        routeId: selectedRoute,
+        arrival,
+        departure,
+        price,
+      });
+      alert("✅ Schedule Added Successfully!");
+      console.log(response.data);
+
+      // Reset form
+      setSelectedBus("");
+      setSelectedDriver("");
+      setSelectedRoute("");
+      setArrival("");
+      setDeparture("");
+      setPrice("");
+    } catch (err) {
+      console.error("Error adding schedule:", err);
+    }
   };
 
   return (
@@ -99,6 +151,7 @@ const VendorDashboard = () => {
       </div>
 
       <div className="dashboard-section">
+        {/* Add Bus */}
         {activeSection === "buses" && (
           <form className="dashboard-form" onSubmit={handleAddBus}>
             <label>Bus Number:</label>
@@ -123,8 +176,8 @@ const VendorDashboard = () => {
 
             {buses.length > 0 && (
               <ul className="list">
-                {buses.map((bus, idx) => (
-                  <li key={idx}>
+                {buses.map((bus) => (
+                  <li key={bus.id}>
                     {bus.busNumber} - {bus.totalSeats} Seats
                   </li>
                 ))}
@@ -133,6 +186,7 @@ const VendorDashboard = () => {
           </form>
         )}
 
+        {/* Add Driver */}
         {activeSection === "drivers" && (
           <form className="dashboard-form" onSubmit={handleAddDriver}>
             <label>Driver Name:</label>
@@ -157,8 +211,8 @@ const VendorDashboard = () => {
 
             {drivers.length > 0 && (
               <ul className="list">
-                {drivers.map((driver, idx) => (
-                  <li key={idx}>
+                {drivers.map((driver) => (
+                  <li key={driver.id}>
                     {driver.driverName} - {driver.driverPhone}
                   </li>
                 ))}
@@ -167,6 +221,7 @@ const VendorDashboard = () => {
           </form>
         )}
 
+        {/* Add Route */}
         {activeSection === "routes" && (
           <form className="dashboard-form" onSubmit={handleAddRoute}>
             <label>Source:</label>
@@ -200,8 +255,8 @@ const VendorDashboard = () => {
 
             {routes.length > 0 && (
               <ul className="list">
-                {routes.map((route, idx) => (
-                  <li key={idx}>
+                {routes.map((route) => (
+                  <li key={route.id}>
                     {route.source} → {route.destination} ({route.distance} km)
                   </li>
                 ))}
@@ -210,6 +265,7 @@ const VendorDashboard = () => {
           </form>
         )}
 
+        {/* Add Schedule */}
         {activeSection === "schedule" && (
           <form className="dashboard-form" onSubmit={handleAddSchedule}>
             <label>Select Bus:</label>
@@ -219,8 +275,8 @@ const VendorDashboard = () => {
               required
             >
               <option value="">Select Bus</option>
-              {buses.map((bus, idx) => (
-                <option key={idx} value={bus.busNumber}>
+              {buses.map((bus) => (
+                <option key={bus.id} value={bus.id}>
                   {bus.busNumber}
                 </option>
               ))}
@@ -233,8 +289,8 @@ const VendorDashboard = () => {
               required
             >
               <option value="">Select Driver</option>
-              {drivers.map((driver, idx) => (
-                <option key={idx} value={driver.driverName}>
+              {drivers.map((driver) => (
+                <option key={driver.id} value={driver.id}>
                   {driver.driverName}
                 </option>
               ))}
@@ -247,11 +303,8 @@ const VendorDashboard = () => {
               required
             >
               <option value="">Select Route</option>
-              {routes.map((route, idx) => (
-                <option
-                  key={idx}
-                  value={`${route.source} → ${route.destination}`}
-                >
+              {routes.map((route) => (
+                <option key={route.id} value={route.id}>
                   {route.source} → {route.destination}
                 </option>
               ))}
